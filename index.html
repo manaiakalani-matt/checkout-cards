@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-NZ">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#164f3c"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="description" content="Learn your darts finishes, one card at a time. Offline checkout flashcards with every chart route and saved mastery.">
+<title>Checkout Cards</title><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./apple-touch-icon.png"><link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<main>
+<header><a class="brand" href="./" aria-label="Checkout Cards home"><span class="brand-icon" aria-hidden="true">◎</span><span>Checkout<span class="brand-light"> Cards</span></span></a><button id="settings-open" class="icon-button" aria-label="Settings and backup">⚙</button></header>
+<section class="intro"><p class="eyebrow">A LITTLE PRACTICE. A BETTER FINISH.</p><h1>Know your way out.</h1><p class="muted">Learn the routes. Remember the maths.</p></section>
+<section class="progress-panel" aria-label="Your progress"><div><span class="small">YOUR PROGRESS</span><strong id="mastery-count">0 / 162 mastered</strong></div><span class="progress-ring" id="percentage">0%</span><progress id="mastery-bar" max="162" value="0" aria-label="Checkouts mastered"></progress></section>
+<nav class="mode-switch" aria-label="Practice mode"><button id="main-mode" aria-pressed="true">Main practice</button><button id="filtered-mode" aria-pressed="false">Filtered practice <span aria-hidden="true">☷</span></button></nav>
+<form id="filters" class="filter-panel" hidden>
+<div class="range-fields"><label>From<input id="min" type="number" min="2" max="170" value="60" inputmode="numeric" required></label><span>–</span><label>To<input id="max" type="number" min="2" max="170" value="70" inputmode="numeric" required></label></div>
+<label>Finishing double<select id="finish"><option value="">Any finish</option></select></label>
+<label>Darts needed<select id="darts"><option value="">Any number</option><option value="1">1 dart · doubles only</option><option value="2">2 darts</option><option value="3">3 darts</option></select></label>
+<label>Progress<select id="progress-filter"><option value="learning">Still learning</option><option value="mastered">Mastered</option><option value="all">All checkouts</option></select></label>
+<button class="primary" type="submit">Apply filters</button><p id="filter-error" role="alert"></p>
+</form>
+<div class="deck-meta"><span id="deck-label">MAIN PRACTICE</span><span id="position"></span></div>
+<section id="study-card" class="study-card" aria-label="Checkout flashcard">
+<div id="question"><p class="small">SCORE REMAINING</p><div id="score" class="hero-score">170</div><p id="route-count" class="muted"></p><button id="reveal" class="reveal-button">Reveal routes <span aria-hidden="true">↗</span></button><p class="hint">Picture your finish, then take a look.</p></div>
+<div id="answer" hidden><div class="answer-heading"><span id="answer-title"></span><button id="hide-answer" class="text-button">Hide answer</button></div><div id="routes"></div><p class="legend">S = single · T = treble · D = double<br>SB = single bull (25) · Bull = double bull (50)</p></div>
+<div id="empty" hidden><span class="empty-icon" aria-hidden="true">✓</span><h2 id="empty-title"></h2><p id="empty-description"></p><button id="empty-action" class="primary">Change filters</button></div>
+</section>
+<div id="grade-actions" class="grade-actions" hidden><button id="again" class="secondary">↻ Practise again</button><button id="master" class="primary">✓ Mastered</button></div>
+<div class="navigation"><button id="prev" class="text-button">← Previous</button><button id="shuffle" class="text-button">⇄ Shuffle</button><button id="next" class="text-button">Next →</button></div>
+<div id="status" class="status" role="status" aria-live="polite"></div>
+<footer><p>One finish at a time.</p><button id="help-open" class="text-button">How it works &amp; sources</button></footer>
+</main>
+<dialog id="settings"><div class="dialog-top"><h2>Your practice</h2><button class="icon-button close-dialog" aria-label="Close settings">✕</button></div><p>Mastery is saved on this device, in this browser. Export a backup to keep it safe or move it to another device.</p><button id="export" class="primary wide">Export progress</button><label class="secondary wide file-label">Import progress<input id="import" type="file" accept="application/json,.json"></label><p id="backup-status" role="status"></p><hr><h3>Your mastered checkouts</h3><p class="muted">Tap a score to put it back into practice.</p><div id="mastered-list" class="mastered-list"></div></dialog>
+<dialog id="help"><div class="dialog-top"><h2>Make it stick.</h2><button class="icon-button close-dialog" aria-label="Close help">✕</button></div><p>Think of a route before revealing the answer. Large numbers show what remains <strong>before</strong> each dart. Underneath, each throw includes its points. Dark green marks the finishing double.</p><p>Mastery is per starting score. Tick “Mastered” when you feel confident with that checkout. Main practice shows every route; filtered practice shows matching routes only.</p><p>Two-dart mode means routes using exactly two darts, including chart alternatives marked “with 2 darts left”.</p><h3>On your iPhone</h3><p>Open in Safari, tap Share, then Add to Home Screen. Load once online before practising offline. Progress in the Home Screen app may be separate from your browser; use Export / Import to transfer it.</p><h3>Sources</h3><p>All 151 routes for scores 40–170 are transcribed from your <a href="https://dartscheckoutassistant.com/checkout-chart/" target="_blank" rel="noopener">Darts Checkout Assistant chart</a>. Scores below 40 add simple single-and-double finishes. Impossible three-dart finishes are excluded.</p><p>Adapted from <a href="https://github.com/Jasleenkaur98/flashcards" target="_blank" rel="noopener">Jasleen Kaur’s Flashcards</a>, under the <a href="./vendor/LICENSE.flashcards">MIT licence</a>.</p></dialog>
+<script type="module" src="./app.js"></script>
+</body></html>
